@@ -31,7 +31,7 @@
 #include <map>
 #include <memory>
 #include <string>
-#include <tr1/functional>
+#include <functional>
 
 namespace expatcc {
 
@@ -94,10 +94,10 @@ inline std::ostream & operator<<(std::ostream & os, error const& e)
 }
 
 typedef std::map<std::string, std::string> attribute_map;
-typedef std::tr1::function<void(std::string const&, attribute_map const&)> start_element_cb;
-typedef std::tr1::function<void(std::string const&)> end_element_cb;
-typedef std::tr1::function<void(std::string const&)> character_data_cb;
-typedef std::tr1::function<void(error const&)> error_cb;
+typedef std::function<void(std::string const&, attribute_map const&)> start_element_cb;
+typedef std::function<void(std::string const&)> end_element_cb;
+typedef std::function<void(std::string const&)> character_data_cb;
+typedef std::function<void(error const&)> error_cb;
 
 namespace internal {
 class parser;
@@ -116,10 +116,10 @@ public:
 	void reset();
 
 private:
-	parser(parser const&); // = deleted;
-	parser & operator=(parser const&); // = deleted;
+	parser(parser const&) = delete;
+	parser & operator=(parser const&) = delete;
 
-	std::auto_ptr<internal::parser> impl_;
+	std::unique_ptr<internal::parser> impl_;
 };
 
 }

@@ -205,9 +205,9 @@ void parser::on_error(error_cb const& cb)
 	impl_->on_error(cb);
 }
 
-bool parser::parse(std::string const& xml, bool final)
+bool parser::parse(std::string const& xml, bool is_final)
 {
-	return impl_->parse(xml, final);
+	return impl_->parse(xml, is_final);
 }
 
 void parser::reset()

@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11
 LDFLAGS =
 CPPFLAGS =
 
@@ -23,7 +23,7 @@ $(TARGET): $(OBJ)
 	$(CXX) -o $@ $(OBJ) $(LDFLAGS) -shared $(LIBS)
 
 clean:
-	rm -rf $(OBJ) $(TARGET) $(TEST_OBJ) $(TESTS)
+	rm -rf $(OBJ) $(TARGET)
 
 .PHONY: all clean
 
